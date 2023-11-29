@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_190630) do
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
     t.text "text"
-    t.datetime "updateAt"
-    t.datetime "createAt"
+    t.datetime "update_at"
+    t.datetime "create_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_190630) do
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
-    t.datetime "updateAt"
-    t.datetime "createAt"
+    t.datetime "update_at"
+    t.datetime "create_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -38,24 +38,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_190630) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "author_id", null: false
     t.string "title"
     t.text "text"
-    t.datetime "updateAt"
-    t.datetime "createAt"
+    t.datetime "update_at"
+    t.datetime "create_at"
     t.integer "commentsCounter"
     t.integer "likesCounter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "photo"
     t.text "bio"
-    t.datetime "updateAt"
-    t.datetime "createAt"
+    t.datetime "update_at"
+    t.datetime "create_at"
     t.integer "postsCounter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,5 +65,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_190630) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "users"
+  add_foreign_key "posts", "users", column: "author_id"
 end
