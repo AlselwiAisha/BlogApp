@@ -28,8 +28,17 @@ RSpec.describe Post, type: :model do
   it 'increments the user posts_counter after creation' do
     user = User.create(name: 'Sana', posts_counter: 0)
     user.posts.create(title: 'Post3', comments_counter: 0, likes_counter: 0)
+    user.posts.create(title: 'Post4', comments_counter: 0, likes_counter: 0)
     user.reload
-    expect(user.posts_counter).to eq(1)
+    expect(user.posts_counter).to eq(2)
+  end
+
+  it 'increments the posts_counter' do
+    user = User.create(name: 'Aisha Mh.', posts_counter: 0)
+    user.posts.create(title: 'Post5', comments_counter: 0, likes_counter: 0)
+    initial_posts_counter = user.posts_counter
+    user.reload # Refresh the author instance from the database
+    expect(user.posts_counter).to eq(initial_posts_counter + 1)
   end
 
   it 'returns recent comments' do
