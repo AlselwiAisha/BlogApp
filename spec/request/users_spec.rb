@@ -12,7 +12,6 @@ RSpec.describe 'Users', type: :request do
       expect(response).to be_successful
     end
 
-
     it 'Response body includes correct placeholder text' do
       get '/users'
       expect(response.body).to include('List of Users')
