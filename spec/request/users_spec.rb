@@ -10,6 +10,7 @@ RSpec.describe 'Users', type: :request do
     it 'Returns a successful response for index' do
       get '/users'
       expect(response).to be_successful
+      expect(response).to render_template(:index)
     end
 
     it 'Response body includes correct placeholder text' do
@@ -27,6 +28,7 @@ RSpec.describe 'Users', type: :request do
     it 'Returns a successful response for show' do
       get '/users/:id'
       expect(response).to be_successful
+      expect(response).to render_template(:show)
     end
 
     it 'Response body includes correct placeholder text' do
