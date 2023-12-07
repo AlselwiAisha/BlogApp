@@ -1,22 +1,17 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find_by(id: params[:user_id])
-    @posts = @user.posts
-    # @comments = @post.recent_comments
+    @posts = current_user.posts
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @add_new_post = @user.posts.build
+    @post = current_user.posts.build
   end
 
   def create
-    current_user = User.find(params[:user_id])
     @post = current_user.posts.build(post_params)
 
     if @post.save
@@ -29,6 +24,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:add_new_post).permit(:title, :text)
+    params.require(:post).permit(:title, :text)
   end
 end
