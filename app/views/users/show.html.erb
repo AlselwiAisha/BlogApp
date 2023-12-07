@@ -1,19 +1,7 @@
 <section class="container">
 <h1 class="mt-5 mb-2"><%=@user.name%> data: <h1>
  <div class="blist-group-item list-group-item-light border card mb-2">
-<div class="mb-3 w-75">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src=<%=@user.photo%> class="img-fluid rounded-start" >
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h2 class="card-title"><%= @user.name %></h2>
-       <h5 class="card-text d-flex  justify-content-end"><small class="text-body-secondary">Number of posts: <%= @user.posts_counter%></small></h5>
-      </div>
-    </div>
-  </div>
-</div> 
+    <%= render @user%>
 </div>
 <div class="card mb-2">
   <div class="card-header">
@@ -25,12 +13,7 @@
 </div>
 
  <% @posts.each do |post| %>
-   <div class="card mb-2">
-      <div class="card-body m-3 w-75">
-        <h2 class="card-title"><%= post.title %><h2>
-      <h4 class="card-text list-group-item-light"><%=post.text%></h4>
-      <h6 class="card-text d-flex  justify-content-end list-group-item-light"><small class="text-body-secondary">Comments : <%=post.comments_counter%> Likes : <%=post.likes_counter%></small></h6>
-   </div>
+   <%=render post%>
  </div>
 <% end %>
 <div class="d-flex  justify-content-center" >

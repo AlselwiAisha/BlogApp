@@ -2,19 +2,7 @@
 <h1>List of Users</h1>
  <% @users.each do |user| %>
  <a href='/users/<%=user.id%>'  class="blist-group-item list-group-item-action list-group-item-light border card mb-2 btn btn-danger">
-<div class="mb-3 w-75">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src=<%=user.photo%> class="img-fluid rounded-start" >
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h2 class="card-title"><%= user.name %></h2>
-       <p class="card-text "><small class="text-body-secondary d-flex  justify-content-end">Number of posts: <%= user.posts_counter%></small></p>
-      </div>
-    </div>
-  </div>
-</div> 
-</a>
+    <%= render user%>
+ </a>
 <% end %>
 <section>
