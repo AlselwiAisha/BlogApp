@@ -3,11 +3,7 @@
      <% @posts.each do |post| %>
  <a href='/users/<%=@user.id%>/posts/<%=post.id%>' class="blist-group-item list-group-item-action list-group-item-light border card mb-2 btn">
    <div class="mb-2">
-      <div class="card-body m-3 w-75">
-        <h2 class="card-title text-black"><%= post.title %><h2>
-      <h4 class="card-text"><%=post.text%></h4>
-      <h6 class="card-text d-flex  justify-content-end"><small class="text-body-secondary">Comments : <%=post.comments_counter%> Likes : <%=post.likes_counter%></small></h6>
-   </div>
+     <%= render post%>
  </div></a>
   <% if post.comments_counter !=0%>
   <div class="card mb-5">
@@ -20,4 +16,9 @@
     </div>
 <% end %>
 
+<div class="d-flex justify-content-center mb-2">
+  <button class="btn btn-primary ">
+    <%= link_to "Add New Post", new_user_post_path(@user) , class: "text-white"  %>
+  </button>
+</div>
 </section>

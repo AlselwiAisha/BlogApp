@@ -1,0 +1,10 @@
+<section class=container>
+<h1> Add a new comment </h1>
+<%= form_with model: [@user,@post,@comment], url: user_post_comments_path(@user, @post), method: :post, local: true, scope: :comment do |f| %>
+    <div>
+    <%= f.label :text %><br>
+    <%= f.text_field :text ,class:"form-control"%>
+    </div>
+ <%= f.submit "Add Comment" , class: "btn btn-primary mt-2" %>
+<% end %>
+<section>
