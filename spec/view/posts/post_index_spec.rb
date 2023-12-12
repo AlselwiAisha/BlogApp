@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :feature do
   before(:each) do
-    @user =  User.create(name: 'user1',photo: 'userPoto', bio: 'test_bio1', posts_counter: 1)
+    @user = User.create(name: 'user1', photo: 'userPoto', bio: 'test_bio1', posts_counter: 1)
     @post = Post.create(title: 'post1', text: 'text', author_id: @user.id, comments_counter: 1, likes_counter: 1)
     @comment1 = Comment.create(text: 'this a comment1', user_id: @user.id, post_id: @post.id)
     @comment2 = Comment.create(text: 'this a comment2', user_id: @user.id, post_id: @post.id)
