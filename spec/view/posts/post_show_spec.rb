@@ -48,13 +48,13 @@ RSpec.describe 'Posts', type: :feature do
     end
 
     it 'See the username of each commentor' do
-        expect(page).to have_content(@comment1.user.name)
-        expect(page).to have_content(@comment2.user.name)
-      end
-  
-      it 'See the comment each commentor left' do
-        expect(page).to have_content(@comment1.text)
-        expect(page).to have_content(@comment2.text)
-      end
+      expect(page).to have_content(@comment1.user.name)
+      expect(page).to have_content(@comment2.user.name)
+    end
+
+    it 'See the comment each commentor left' do
+      expect(page).to have_content(@comment1.text)
+      expect(page).to have_content(@comment2.text)
+    end
   end
 end

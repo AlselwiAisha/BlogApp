@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :feature do
   before(:each) do
-    @user = User.create(name: 'user1', photo: 'userPoto', bio: 'test_bio1', posts_counter: 1)
+    @user = User.create(name: 'user1', photo: 'userPhoto', bio: 'test_bio1', posts_counter: 1)
     @post = Post.create(title: 'post1', text: 'text', author_id: @user.id, comments_counter: 1, likes_counter: 1)
     @comment1 = Comment.create(text: 'this a comment1', user_id: @user.id, post_id: @post.id)
     @comment2 = Comment.create(text: 'this a comment2', user_id: @user.id, post_id: @post.id)
@@ -13,6 +13,10 @@ RSpec.describe 'Posts', type: :feature do
   end
 
   describe 'Post/index' do
+    it 'See the user\'s profile picture' do
+      expect(page).to have_selector("img[src*='#{@user.photo}']")
+    end
+
     it 'renders a list of posts' do
       expect(page).to have_selector('h1', text: "Here is a list of posts for #{@user.name}")
     end
@@ -45,6 +49,10 @@ RSpec.describe 'Posts', type: :feature do
 
     it 'See how many likes a post has.' do
       expect(page).to have_content(@post.likes_counter)
+    end
+
+    it 'to show the Pagination buttons' do
+      expect(page).to have_content('Pagination')
     end
 
     it 'When I click on a post, it redirects me to that post show page.' do
