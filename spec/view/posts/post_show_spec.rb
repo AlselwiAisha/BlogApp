@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :feature do
   end
 
   describe 'Post/index' do
-    it 'User name.' do
+    it 'See who wrote the post' do
       expect(page).to have_content(@user.name)
     end
 
@@ -25,11 +25,15 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@post.title)
     end
 
-    it 'See some of the post text.' do
+    it 'See some of the post body.' do
       expect(page).to have_content(@post.text)
     end
 
-    it 'See the comments of post.' do
+    it 'See the first comments of post.' do
+      expect(page).to have_content('this a comment1')
+    end
+
+    it 'See the comments of the post.' do
       expect(page).to have_content('this a comment1')
       expect(page).to have_content('this a comment2')
       expect(page).to have_content('this a comment3')
@@ -42,5 +46,15 @@ RSpec.describe 'Posts', type: :feature do
     it 'See how many likes a post has.' do
       expect(page).to have_content(@post.likes_counter)
     end
+
+    it 'See the username of each commentor' do
+        expect(page).to have_content(@comment1.user.name)
+        expect(page).to have_content(@comment2.user.name)
+      end
+  
+      it 'See the comment each commentor left' do
+        expect(page).to have_content(@comment1.text)
+        expect(page).to have_content(@comment2.text)
+      end
   end
 end
