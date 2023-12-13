@@ -5,7 +5,7 @@ RSpec.describe 'Users', type: :feature do
     before(:example) do
       @user = User.create(name: 'Lucy', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Engineer',
                           posts_counter: 1)
-                          @user2 = User.create(name: 'user2', photo: 'photo2', bio: 'bio2',posts_counter: 0)
+      @user2 = User.create(name: 'user2', photo: 'photo2', bio: 'bio2', posts_counter: 0)
       visit users_path
     end
 
@@ -17,6 +17,7 @@ RSpec.describe 'Users', type: :feature do
 
     it "See the user's profile picture" do
       expect(page).to have_selector("//img[@src = '#{@user.photo}' ]")
+      expect(page).to have_selector("img[src*='#{@user2.photo}']")
     end
 
     it 'See correct number of posts user has written' do
