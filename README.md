@@ -95,6 +95,18 @@ it will install the required gemfile for running the project
 - GitHub: [Aisha Alsewi](https://github.com/AlselwiAisha)
 - LinkedIn: [Aisha Alsewi](https://www.linkedin.com/in/aisha-alselwi/)
 
+👤 **Lucy W. Mwangi**
+
+- GitHub: [@lucy-sees](https://github.com/lucy-sees)
+- LinkedIn: [Lucy (Wanjiru) Mwangi](https://www.linkedin.com/in/lucy-wanjiru-mwangi/)
+
+👤 **Khuraijam Henary Singh**
+
+- GitHub: [@githubhandle](https://github.com/HenaryKhuraijam)
+- Twitter: [@twitterhandle](https://twitter.com/HenaryKhuraijam)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/henary-khuraijam-50487317a/)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
