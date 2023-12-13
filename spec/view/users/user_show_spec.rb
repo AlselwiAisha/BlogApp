@@ -44,5 +44,14 @@ RSpec.describe 'Users', type: :feature do
       click_link(@first_post.title)
       expect(page).to have_current_path(user_post_path(@user, @first_post))
     end
+
+    it 'When I click to see all posts, it redirects me to the user\'s post\'s index page.' do
+      if @user.posts_counter > 0
+        click_link('see all posts')
+        expect(page).to have_current_path(user_posts_path(@user))
+      else
+        expect(page).to have_content('No posts yet')
+      end
+    end
   end
 end
