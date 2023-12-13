@@ -1,21 +1,25 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @posts = current_user.posts.includes(:comments)
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
-    @post = current_user.posts.includes(:comments).find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.includes(:comments).find(params[:id])
   end
 
   def new
-    @post = current_user.posts.build
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build(post_params)
     if @post.save
-      redirect_to user_posts_path(current_user), notice: 'Post was successfully created.'
+      redirect_to user_posts_path(@user), notice: 'Post was successfully created.'
     else
       render :new
     end
