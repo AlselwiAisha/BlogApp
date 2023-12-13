@@ -13,9 +13,10 @@
 </div>
 
  <% @posts.each do |post| %>
-   <div class="card mb-2">
-    <%=render post%>
- </div>
+ <a href='/users/<%=@user.id%>/posts/<%=post.id%>' class="blist-group-item list-group-item-action list-group-item-light border card mb-2 btn">
+   <div class="mb-2">
+     <%= render post%>
+ </div></a>
 <% end %>
 <div class="d-flex  justify-content-center" >
  <a href='/users/<%=@user.id%>/posts' class="btn btn-primary p-2" style="width: 200px;">see all posts</a>

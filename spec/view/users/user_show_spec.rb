@@ -42,7 +42,7 @@ RSpec.describe 'Users', type: :feature do
 
     it 'should redirects to all posts show page.' do
       click_link(@first_post.title)
-      expect(page).to have_current_path(user_posts_path(@user))
+      expect(page).to have_current_path(user_post_path(@user, @first_post))
     end
   end
 end
