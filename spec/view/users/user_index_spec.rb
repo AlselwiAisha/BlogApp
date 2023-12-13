@@ -5,6 +5,7 @@ RSpec.describe 'Users', type: :feature do
     before(:example) do
       @user = User.create(name: 'Lucy', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Engineer',
                           posts_counter: 1)
+                          @user2 = User.create(name: 'user2', photo: 'photo2', bio: 'bio2',posts_counter: 0)
       visit users_path
     end
 
