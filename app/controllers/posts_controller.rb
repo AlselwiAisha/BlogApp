@@ -33,7 +33,7 @@ class PostsController < ApplicationController
       current_post.comments.each(&:destroy)
       current_post.likes.each(&:destroy)
       current_post.destroy
-      user_post_counter = User.find(params[:user_id])
+      User.find(params[:user_id])
       redirect_to user_posts_path(current_user), notice: 'post was successfully deleted.'
     else
       redirect_to redirect_url, alert: 'Failed to delete the post.'

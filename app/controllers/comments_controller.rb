@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment.user = @user
 
     if @comment.save
-      redirect_to "/users/#{@user.id}/posts/#{params[:post_id]}" , notice: 'Comment was successfully created.'
+      redirect_to "/users/#{@user.id}/posts/#{params[:post_id]}", notice: 'Comment was successfully created.'
     else
       render :new
     end
@@ -31,6 +31,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text)  # Add any other permitted parameters here
+    params.require(:comment).permit(:text)
   end
 end
