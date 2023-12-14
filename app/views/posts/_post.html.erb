@@ -5,6 +5,9 @@
       <h6 class="card-text d-flex  justify-content-end ">
         <small class="text-body-secondary">Comments : <%=post.comments_counter%> Likes : <%=post.likes_counter%>
         </small>
+         <% if post.author_id == @user.id || @user.admin? %>
+            <%= button_to 'Delete Post', user_post_path(post.author_id,post), method: :delete, class: 'btn btn-danger' %>
+         <% end %>
       </h6>
     </div>
 </div>
