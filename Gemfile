@@ -68,7 +68,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'devise', '~> 4.9'
-gem 'rswag'
 gem 'cancancan'
+gem 'devise', '~> 4.9'
 gem 'rspec-openapi'
+gem 'rswag'

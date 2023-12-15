@@ -2,9 +2,7 @@
 require 'swagger_helper'
 
 describe 'Users API' do
-
   path '/users' do
-
     post 'Creates a user' do
       tags 'Users'
       consumes 'application/json'
@@ -14,7 +12,7 @@ describe 'Users API' do
           name: { type: :string },
           surname: { type: :string }
         },
-        required: [ 'name', 'surname' ]
+        required: %w[name surname]
       }
 
       response '201', 'user created' do
@@ -30,7 +28,6 @@ describe 'Users API' do
   end
 
   path '/users/{id}' do
-
     get 'Retrieves a user' do
       tags 'users', 'Another Tag'
       produces 'application/json', 'application/xml'
@@ -39,12 +36,12 @@ describe 'Users API' do
 
       response '200', 'user found' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            name: { type: :string },
-            surname: { type: :string }
-          },
-          required: [ 'id', 'name', 'surname' ]
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 surname: { type: :string }
+               },
+               required: %w[id name surname]
 
         let(:id) { user.create(name: 'foo', surname: 'bar').id }
         run_test!
@@ -56,7 +53,7 @@ describe 'Users API' do
       end
 
       response '406', 'unsupported accept header' do
-        let(:'Accept') { 'application/foo' }
+        let(:Accept) { 'application/foo' }
         run_test!
       end
     end
