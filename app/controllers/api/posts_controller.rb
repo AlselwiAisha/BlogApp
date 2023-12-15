@@ -19,6 +19,4 @@ class Api::PostsController < ApplicationController
       render json: { status: 'Error', message: 'Failed to fetch post!', errors: @post.errors }, status: :bad_request
     end
   end
-=======
->>>>>>> 2baa022fa222ef8f7d737954e25461ef209bbc38
 end
