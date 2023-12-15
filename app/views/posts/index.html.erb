@@ -3,8 +3,8 @@
 
   <div class="d-flex justify-content-right mb-2">
   <button class="btn btn-primary ">
-    <%= link_to "Add New Post", new_user_post_path(@user) , class: "text-white"  %>
-  </button>
+      <%= link_to "Add New Post", new_user_post_path(@user), class: "text-white" if @user.id == current_user.id%>
+   </button>
 </div>
   <div class="blist-group-item list-group-item-light border card mb-2 btn">
     <%= render @user%>
