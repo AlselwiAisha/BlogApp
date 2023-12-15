@@ -6,7 +6,11 @@
     <div class="card mb-5">
       <div class="card-body ">
         <% @post.comments.each do |comment| %>
-        <h5><%=comment.user.name%> : <%=comment.text%> </h5>
+        <h5 class="d-flex"><%=comment.user.name%> : <%=comment.text%>
+         <% if can? :destroy, comment %>
+           <%= button_to 'Delete', user_post_comment_path(@post.author_id, @post,comment), method: :delete, class: 'btn btn-light text-danger btn-sm'%>
+         <% end %>
+       </h5>
         <% end %>
         <% end %>
       </div>
@@ -18,4 +22,5 @@
         <%= f.submit "Like Post" , class: "btn btn-primary" %>
     <% end %>
 </div>  
+
  </section>
